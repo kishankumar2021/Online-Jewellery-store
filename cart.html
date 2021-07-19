@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 20%;
+        }
+        h1{
+            border: 1px solid black;
+            border-radius: 8px;
+            text-align: center;
+            font-style: normal;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+        #pay{
+            margin-left: 85%;
+            /* margin-top: 2%; */
+            width: 200px;
+            height: 50px;
+            font-size: 30px;
+        } 
+    </style>
+</head>
+
+<body>
+    <h1>WELCOME TO CART</h1>
+    <div id="data"></div>
+
+  
+    <button onclick="payment()" id="pay">PAYMENT</button>
+   
+
+</body>
+
+</html>
+<script>
+
+    var products = document.getElementById("data")
+
+function addProduct(el){
+    var div = document.createElement("div");
+
+    var p = document.createElement("p");
+    p.innerHTML = el.name;
+
+    var image = document.createElement("img");
+    image.src = el.url;
+
+    var price_p = document.createElement("p");
+    price_p.innerHTML = el.price;
+
+    div.append(image,p,price_p);
+
+    products.append(div);
+}
+
+function showVisited(){
+
+    let data = JSON.parse(localStorage.getItem("cart"));
+
+    data.forEach(function(el){
+        addProduct(el)
+
+    });
+}
+
+    showVisited();
+
+    //   function showVisited() {
+    //         window.location.href = 'payme.html'
+    //     }
+</script>
